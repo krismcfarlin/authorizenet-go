@@ -146,6 +146,7 @@ func (c *Client) GetProfile(customer Customer) (*GetCustomerProfileResponse, err
 		GetCustomerProfile: GetCustomerProfile{
 			MerchantAuthentication: c.GetAuthentication(),
 			CustomerProfileID:      customer.ID,
+			Email:                  customer.Email,
 		},
 	}
 	req, err := json.Marshal(action)
@@ -377,7 +378,8 @@ type CustomerProfileRequest struct {
 
 type GetCustomerProfile struct {
 	MerchantAuthentication MerchantAuthentication `json:"merchantAuthentication"`
-	CustomerProfileID      string                 `json:"customerProfileId"`
+	CustomerProfileID      string                 `json:"customerProfileId,omitempty"`
+	Email                  string                 `json:"email,omitempty"`
 }
 
 type GetCustomerProfileResponse struct {
