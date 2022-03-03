@@ -147,6 +147,7 @@ func (c *Client) GetProfile(customer Customer) (*GetCustomerProfileResponse, err
 			MerchantAuthentication: c.GetAuthentication(),
 			CustomerProfileID:      customer.ID,
 			Email:                  customer.Email,
+			IncludeIssuerInfo:      true,
 		},
 	}
 	req, err := json.Marshal(action)
@@ -380,6 +381,7 @@ type GetCustomerProfile struct {
 	MerchantAuthentication MerchantAuthentication `json:"merchantAuthentication"`
 	CustomerProfileID      string                 `json:"customerProfileId,omitempty"`
 	Email                  string                 `json:"email,omitempty"`
+	IncludeIssuerInfo      bool                   `json:"includeIssuerInfo"`
 }
 
 type GetCustomerProfileResponse struct {
