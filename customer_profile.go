@@ -436,6 +436,8 @@ type GetPaymentProfiles struct {
 		CreditCard struct {
 			CardNumber     string `json:"cardNumber"`
 			ExpirationDate string `json:"expirationDate"`
+			CardType       string `json:"cardType,omitempty"`
+			IssuerNumber   string `json:"issuerNumber, omitempty"`
 		} `json:"creditCard"`
 	} `json:"payment"`
 	CustomerType string `json:"customerType"`
