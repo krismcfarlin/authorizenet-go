@@ -348,10 +348,7 @@ type Paging struct {
 	Limit  string `json:"limit"`
 	Offset string `json:"offset"`
 }
-
-type GetSubscriptionList struct {
-	TotalNumInResultSet int `json:"totalNumInResultSet"`
-	SubscriptionDetails []struct {
+type SubscriptionDetail struct {
 		ID                        int     `json:"id"`
 		Name                      string  `json:"name"`
 		Status                    string  `json:"status"`
@@ -368,6 +365,10 @@ type GetSubscriptionList struct {
 		CustomerProfileID         int     `json:"customerProfileId"`
 		CustomerPaymentProfileID  int     `json:"customerPaymentProfileId,omitempty"`
 		CustomerShippingProfileID int     `json:"customerShippingProfileId,omitempty"`
-	} `json:"subscriptionDetails"`
+}
+	
+type GetSubscriptionList struct {
+	TotalNumInResultSet int `json:"totalNumInResultSet"`
+	SubscriptionDetails SubscriptionDetail[] `json:"subscriptionDetails"`
 	MessagesResponse
 }
