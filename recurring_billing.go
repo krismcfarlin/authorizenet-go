@@ -369,6 +369,6 @@ type SubscriptionDetail struct {
 	
 type GetSubscriptionList struct {
 	TotalNumInResultSet int `json:"totalNumInResultSet"`
-	SubscriptionDetails SubscriptionDetail[] `json:"subscriptionDetails"`
+	SubscriptionDetails []SubscriptionDetail `json:"subscriptionDetails"`
 	MessagesResponse
 }
