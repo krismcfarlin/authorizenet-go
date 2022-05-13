@@ -428,6 +428,7 @@ type GetShippingProfiles struct {
 	Zip               string `json:"zip,omitempty"`
 	Country           string `json:"country,omitempty"`
 	PhoneNumber       string `json:"phoneNumber,omitempty"`
+	IsDefault         bool   `json:"isDefault,omitempty"`
 }
 
 type GetPaymentProfiles struct {
