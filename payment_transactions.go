@@ -281,8 +281,12 @@ type TransactionRequest struct {
 	CustomerIP string   `json:"customerIP,omitempty"`
 	//TransactionSettings TransactionSettings `json:"transactionSettings,omitempty"`
 	//UserFields          UserFields          `json:"userFields,omitempty"`
+	Order                 *Order              `json:"order,omitempty"`
 }
-
+type Order struct {
+	InvoiceNumber string `json:"invoiceNumber,omitempty"`
+	Description   string `json:"description,omitempty"`
+}
 type Address struct {
 	FirstName         string `json:"firstName,omitempty"`
 	LastName          string `json:"lastName,omitempty"`
