@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/hanzoai/authorizenet-go"
-	"os"
+	authorizenet "github.com/krismcfarlin/authorizenet-go"
 )
 
 var newTransactionId string
