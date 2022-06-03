@@ -30,6 +30,10 @@ func (tranx NewTransaction) ChargeProfile(profile Customer, c Client) (*Transact
 				PaymentProfileId: profile.PaymentID,
 			},
 		},
+		Order : &Order{
+			InvoiceNumber:tranx.InvoiceId,
+			Description:tranx.RefTransId,
+		},
 	}
 	res, err := c.SendTransactionRequest(new)
 	return res, err
