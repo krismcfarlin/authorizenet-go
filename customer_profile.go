@@ -239,17 +239,7 @@ func (c *Client) UpdateShippingProfile(profile Profile) (*MessagesResponse, erro
 		UpdateCustomerShippingAddress: UpdateCustomerShippingAddress{
 			CustomerProfileID:      profile.CustomerProfileId,
 			MerchantAuthentication: c.GetAuthentication(),
-			Address: Address{
-				FirstName:         "My",
-				LastName:          "Name",
-				Address:           "38485 New Road ave.",
-				City:              "Los Angeles",
-				State:             "CA",
-				Zip:               "283848",
-				Country:           "USA",
-				PhoneNumber:       "8885555555",
-				CustomerAddressID: profile.CustomerAddressId,
-			},
+			Address: profile.Shipping,
 		},
 	}
 	dat, err := c.MessageResponder(action)
@@ -609,5 +599,5 @@ type UpdateCustomerShippingAddressRequest struct {
 type UpdateCustomerShippingAddress struct {
 	MerchantAuthentication MerchantAuthentication `json:"merchantAuthentication"`
 	CustomerProfileID      string                 `json:"customerProfileId"`
-	Address                Address                `json:"address"`
+	Address                *Address                `json:"address"`
 }
