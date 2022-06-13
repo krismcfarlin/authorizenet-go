@@ -1,6 +1,7 @@
 package authorizenet
 
 import (
+	"fmt"
 	"encoding/json"
 )
 
@@ -164,17 +165,54 @@ func (c *Client) GetProfile(customer Customer) (*GetCustomerProfileResponse, err
 }
 
 func (c *Client) CreateProfile(profile Profile) (*CustomProfileResponse, error) {
+	auth:=c.GetAuthentication()
+	/*
 	action := CreateCustomerProfileRequest{
 		CreateCustomerProfile: CreateCustomerProfile{
-			MerchantAuthentication: c.GetAuthentication(),
+			MerchantAuthentication: auth,
 			Profile:                profile,
 			ValidationMode:         c.Mode,
 		},
 	}
-	req, err := json.Marshal(action)
-	if err != nil {
-		return nil, err
-	}
+
+	 */
+	actionString:=fmt.Sprintf(`{
+		"createCustomerProfileRequest": {
+			"merchantAuthentication": {
+				"name": "%v",
+					"transactionKey": "%v"
+			},
+			"profile": {
+				"merchantCustomerId": "%v",
+					"description": "Profile description here",
+					"email": "%v",
+					"paymentProfiles": {
+					"customerType": "individual",
+						"billTo":{"firstName":"%v","lastName":"%v"},
+						"payment": {
+						"creditCard": {
+							"cardNumber": "%v",
+								"expirationDate": "%v"
+						}
+					}
+				}
+			},
+			"validationMode": "testMode"
+		}
+	}`,auth.Name,
+	auth.TransactionKey,
+	profile.MerchantCustomerID,
+	profile.Email,
+	profile.PaymentProfiles.BillTo.FirstName,
+	profile.PaymentProfiles.BillTo.LastName,
+	profile.PaymentProfiles.Payment.CreditCard.CardNumber,
+	profile.PaymentProfiles.Payment.CreditCard.ExpirationDate,
+	)
+	//req, err := json.Marshal(action)
+	req := []byte(actionString)
+	//if err != nil {
+	//	return nil, err
+	//}
 
 	res, err := c.SendRequest(req)
 	var dat CustomProfileResponse
