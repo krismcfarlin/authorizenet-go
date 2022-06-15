@@ -226,7 +226,7 @@ func (c *Client) CreateProfile(profile Profile) (*CustomProfileResponse, error) 
 	//if err != nil {
 	//	return nil, err
 	//}
-
+	fmt.Println("actionstring ",actionString)
 	res, err := c.SendRequest(req)
 	var dat CustomProfileResponse
 	err = json.Unmarshal(res, &dat)
