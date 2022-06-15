@@ -188,7 +188,15 @@ func (c *Client) CreateProfile(profile Profile) (*CustomProfileResponse, error) 
 					"email": "%v",
 					"paymentProfiles": {
 					"customerType": "individual",
-						"billTo":{"firstName":"%v","lastName":"%v"},
+						"billTo":{
+							"firstName":"%v",
+							"lastName":"%v"
+							"address":"%v",
+                            "city": "%v",
+							"state":"%v",
+                            "zip":"%v",
+                            "country:"%v",
+						},
 						"payment": {
 						"creditCard": {
 							"cardNumber": "%v",
@@ -205,6 +213,11 @@ func (c *Client) CreateProfile(profile Profile) (*CustomProfileResponse, error) 
 	profile.Email,
 	profile.PaymentProfiles.BillTo.FirstName,
 	profile.PaymentProfiles.BillTo.LastName,
+	profile.PaymentProfiles.BillTo.Address,
+	profile.PaymentProfiles.BillTo.City,
+	profile.PaymentProfiles.BillTo.State,
+	profile.PaymentProfiles.BillTo.Zip,
+	profile.PaymentProfiles.BillTo.Country,
 	profile.PaymentProfiles.Payment.CreditCard.CardNumber,
 	profile.PaymentProfiles.Payment.CreditCard.ExpirationDate,
 	)
