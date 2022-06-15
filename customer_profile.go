@@ -176,33 +176,12 @@ func (c *Client) CreateProfile(profile Profile) (*CustomProfileResponse, error) 
 	}
 
 	 */
-	actionString:=fmt.Sprintf(`{
-		"createCustomerProfileRequest": {
-			"merchantAuthentication": {
-				"name": "%v",
-				"transactionKey": "%v"
-			},
-			"profile": {
-				"merchantCustomerId": "%v",
-				"description": "Profile description here",
-				"email": "%v",
-				"paymentProfiles": {
-				"customerType": "individual",
-				"billTo":{
-					"firstName":"%v",
-					"lastName":"%v",
-					"address":"%v",
-                            		"city": "%v",
-					"state":"%v",
-                            		"zip":"%v",
-                            		"country:"%v",
-				},
-				"payment": {
-					"creditCard": {
-						"cardNumber": "%v",
-						"expirationDate": "%v"
-					}
-				}
+	actionString:=fmt.Sprintf(`{"createCustomerProfileRequest": {"merchantAuthentication": {"name": "%v","transactionKey": "%v"},
+			"profile": {"merchantCustomerId": "%v","description": "Profile description here","email": "%v",
+				"paymentProfiles":{
+				"customerType":"individual",
+				"billTo":{"firstName":"%v","lastName":"%v","address":"%v","city": "%v","state":"%v","zip":"%v","country:"%v"},
+				"payment": {"creditCard": {"cardNumber": "%v","expirationDate": "%v"}}
 			}
 		},
 		"validationMode": "liveMode"
