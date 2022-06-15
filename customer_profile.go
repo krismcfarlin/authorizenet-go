@@ -197,7 +197,7 @@ func (c *Client) CreateProfile(profile Profile) (*CustomProfileResponse, error) 
 					}
 				}
 			},
-			"validationMode": "testMode"
+			"validationMode": "liveMode"
 		}
 	}`,auth.Name,
 	auth.TransactionKey,
