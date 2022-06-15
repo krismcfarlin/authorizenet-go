@@ -180,33 +180,33 @@ func (c *Client) CreateProfile(profile Profile) (*CustomProfileResponse, error) 
 		"createCustomerProfileRequest": {
 			"merchantAuthentication": {
 				"name": "%v",
-					"transactionKey": "%v"
+				"transactionKey": "%v"
 			},
 			"profile": {
 				"merchantCustomerId": "%v",
-					"description": "Profile description here",
-					"email": "%v",
-					"paymentProfiles": {
-					"customerType": "individual",
-						"billTo":{
-							"firstName":"%v",
-							"lastName":"%v"
-							"address":"%v",
-                            "city": "%v",
-							"state":"%v",
-                            "zip":"%v",
-                            "country:"%v",
-						},
-						"payment": {
-						"creditCard": {
-							"cardNumber": "%v",
-								"expirationDate": "%v"
-						}
+				"description": "Profile description here",
+				"email": "%v",
+				"paymentProfiles": {
+				"customerType": "individual",
+				"billTo":{
+					"firstName":"%v",
+					"lastName":"%v",
+					"address":"%v",
+                            		"city": "%v",
+					"state":"%v",
+                            		"zip":"%v",
+                            		"country:"%v",
+				},
+				"payment": {
+					"creditCard": {
+						"cardNumber": "%v",
+						"expirationDate": "%v"
 					}
 				}
-			},
-			"validationMode": "liveMode"
-		}
+			}
+		},
+		"validationMode": "liveMode"
+	    }
 	}`,auth.Name,
 	auth.TransactionKey,
 	profile.MerchantCustomerID,
